@@ -11,4 +11,7 @@ jobs:
       - run: gcloud info
       - name: gcloud
         run: |
-         gcloud auth configure-docker && docker pull ubuntu
+         gcloud auth configure-docker
+         git clone https://github.com/GoogleCloudPlatform/github-actions/
+         cd github-actions/example-workflows/cloud-run/
+         docker build .
