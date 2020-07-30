@@ -1,11 +1,9 @@
 on : push
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
 jobs:
   build:
     runs-on: 'ubuntu-latest'
-
-env:
-  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-
     steps:
       - uses: actions/checkout@v2
       - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
