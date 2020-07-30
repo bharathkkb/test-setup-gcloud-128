@@ -3,15 +3,22 @@ jobs:
   build:
     runs-on: 'ubuntu-latest'
 
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+
     steps:
       - uses: actions/checkout@v2
       - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
-          version: '298.0.0'
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
       - run: gcloud info
       - name: gcloud
         run: |
          gcloud auth configure-docker
          git clone https://github.com/GoogleCloudPlatform/github-actions/
          cd github-actions/example-workflows/cloud-run/
-         docker build .
+         docker build --tag "gcr.io/$PROJECT_ID/foo:$GITHUB_SHA" .
+         docker push "gcr.io/$PROJECT_ID/foo:$GITHUB_SHA"
+         
