@@ -17,6 +17,7 @@ jobs:
          gcloud auth configure-docker
          git clone https://github.com/GoogleCloudPlatform/github-actions/
          cd github-actions/example-workflows/cloud-run/
+         docker pull "gcr.io/$PROJECT_ID/foo:latest"
          docker build --tag "gcr.io/$PROJECT_ID/foo:$GITHUB_SHA" .
          docker push "gcr.io/$PROJECT_ID/foo:$GITHUB_SHA"
          
