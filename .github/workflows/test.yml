@@ -11,14 +11,11 @@ jobs:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
-          version: '301.0.0'  
+          version: '301.0.0'
       - run: gcloud info
       - name: gcloud
         run: |
          gcloud auth configure-docker
          git clone https://github.com/GoogleCloudPlatform/github-actions/
          cd github-actions/example-workflows/cloud-run/
-         docker pull "gcr.io/$PROJECT_ID/foo:latest"
-         docker build --tag "gcr.io/$PROJECT_ID/foo:$GITHUB_SHA" .
-         docker push "gcr.io/$PROJECT_ID/foo:$GITHUB_SHA"
-         
+         docker-compose pull
