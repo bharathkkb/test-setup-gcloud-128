@@ -18,4 +18,5 @@ jobs:
          gcloud auth configure-docker
          git clone https://github.com/GoogleCloudPlatform/github-actions/
          cd github-actions/example-workflows/cloud-run/
+         pip3 install docker-compose --upgrade
          docker-compose pull
