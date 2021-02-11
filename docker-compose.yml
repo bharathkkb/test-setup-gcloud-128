@@ -1,4 +1,4 @@
 version: '3'
 services:
   db:
-    image: gcr.io/$PROJECT_ID/foo:latest
+    image: gcr.io/cloudrun/hello
