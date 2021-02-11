@@ -6,12 +6,11 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - uses: actions/checkout@v2
-      - uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      - uses: google-github-actions/setup-gcloud@master
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
-          version: '301.0.0'
       - run: gcloud info
       - name: gcloud
         run: |
