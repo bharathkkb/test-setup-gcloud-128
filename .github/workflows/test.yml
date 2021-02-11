@@ -15,7 +15,7 @@ jobs:
       - name: gcloud
         run: |
          gcloud auth configure-docker
-         git clone https://github.com/GoogleCloudPlatform/github-actions/
+         git clone --branch v0.2.0 https://github.com/GoogleCloudPlatform/github-actions/
          cd github-actions/example-workflows/cloud-run/
          export LD_LIBRARY_PATH=/usr/local/lib
          docker-compose pull
